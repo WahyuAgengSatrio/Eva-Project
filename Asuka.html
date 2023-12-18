@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="nav-container">
+        <a href="Asuka.html" class="nav-button"><img src="Aset/Asuka.jpg" alt="Icon 1"></a>
+        <a href="Shinji.html" class="nav-button"><img src="Aset/Shinji.jpg" alt="Icon 2"></a>
+        <a href="Rei.html" class="nav-button"><img src="Aset/Rei.jpg" alt="Icon 3"></a>
+        <a href="Mari.html" class="nav-button"><img src="Aset/Mari.jpg" alt="Icon 4"></a>
+        <!-- Add more links as needed -->
+    </div>
+
+    <div id="content-container">
+        <div id="content">
+            <!-- Content of your page goes here -->
+            <h1 id="pageTitle">
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var navContainer = document.getElementById('nav-container');
+            navContainer.classList.add('show-nav');
+    
+            setBackgroundImage();
+        });
+    
+        function setBackgroundImage() {
+            const body = document.body;
+            const pageNameMatch = window.location.pathname.match(/\/(\w+)\.html/);
+            
+            if (pageNameMatch) {
+                const pageName = pageNameMatch[1];
+                body.style.opacity = 0; // Set opacity to 0 for a smooth transition
+                setTimeout(() => {
+                    body.style.background = `url('Aset/${pageName}.jpg') no-repeat center center fixed`;
+                    body.style.backgroundSize = 'cover';
+                    document.getElementById('pageTitle').innerText = `Welcome to ${pageName} Page`;
+                    body.style.opacity = 1; // Set opacity back to 1 after the transition
+                }, 500); // Wait for 500 milliseconds before changing the background
+            } else {
+                console.error('Invalid page URL');
+            }
+        }
+    </script>
+    
+</body>
+</html>
